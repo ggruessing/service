@@ -18,32 +18,17 @@ function handleRequest(req,res){
 
 	console.log("WE GOT A BITE CAP'N, they be lookin at: "+path.pathname)
 
-	function home(url,req,res){
-	fs.readFile(__dirname+path.pathname+".html",function(err,data){
-		res.writeHead(200 , {"Content-Type":"text/html"})
-		res.end(data)
-	})
-
-	if(req){
-		home()
+	switch (path.pathname) {
+		case "/":
+			home(path.pathname, req, res);
+			break;
+		case "/food":
+			food(path.pathname, req, res);
+			break;
+		case "/movies":
+			movies(path.pathname, req, res)
+			break;
 	}
-	else{
-		
-	}
-
-}
-
-	// switch (path.pathname) {
-	// 	case "/":
-	// 		home(path.pathname, req, res);
-	// 		break;
-	// 	case "/food":
-	// 		food(path.pathname, req, res);
-	// 		break;
-	// 	case "/movies":
-	// 		movies(path.pathname, req, res)
-	// 		break;
-	// }
 }
 
 function home(url,req,res){
